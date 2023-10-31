@@ -1,0 +1,54 @@
+######################################################################################################
+
+#Запрос
+create view (name) as
+select (stolbik)
+from (table)
+where ((table).(primary_key)=(table).(primary_key)) and ((table).(primary_key)=(table).(primary_key))
+
+######################################################################################################
+
+#Процедура
+ CREATE PROCEDURE (name) @(name_peremennoy) varchar(50)
+AS
+BEGIN
+   SELECT (stolbik),(stolbik)
+   FROM (table),(table)
+   WHERE ((stolbik)=@(name_peremennoy)) and (svyasi)
+   order by (stolbik)
+END
+
+######################################################################################################
+
+#Триггер добавление
+create TRIGGER (name_trigger)
+on (table)
+After INSERT
+AS BEGIN
+   Set nocount on;
+      Print '(add)'
+END
+
+######################################################################################################
+
+#Триггер удаление
+create TRIGGER (name_trigger)
+on (table)
+After DELETE
+AS BEGIN
+   Set nocount on;
+      Print '(del)'
+END
+
+######################################################################################################
+
+#Триггер обновление
+create TRIGGER (name_trigger)
+ON (table)
+After UPDATE
+AS BEGIN
+   Set nocount on;
+      print '(update)'
+END
+
+######################################################################################################

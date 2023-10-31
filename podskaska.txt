@@ -1,0 +1,46 @@
+#добавление
+this.ТаблицаBindingSource.AddNew();
+===================================================================================
+#сохранение
+this.Validate();
+            this.таблицаBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.проект);
+===================================================================================
+#удаление
+ try
+            {
+                MessageBoxButtons mb = MessageBoxButtons.YesNo;
+                DialogResult dr;
+                dr = MessageBox.Show("Вы действительно хотите удалить запись?", "Подтверждение", mb);
+                if (dr == DialogResult.Yes)
+                {
+                    this.таблицаBindingSource.RemoveCurrent();
+                    this.Validate();
+                    this.таблицаBindingSource.EndEdit();
+                    this.tableAdapterManager.UpdateAll(this.проект);
+                    MessageBox.Show("Запись успешно удалена", "Готово");
+                }
+                this.таблицаTableAdapter.Fill(this.проект.таблица);
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось удалить запись, возможно есть связанные с ней записи.", "Ошибка");
+            }
+===================================================================================
+#сортировка по убыванию
+ ListSortDirection Descending = ListSortDirection.Descending;
+            this.таблицаDataGridView.Sort(dataGridViewTextBoxColumn(какая колонка, счёт с нуля), Descending);
+===================================================================================
+#сортировка по возрастанию
+ListSortDirection Ascending = ListSortDirection.Ascending;
+            this.таблицаDataGridView.Sort(dataGridViewTextBoxColumn(какая колонка, счёт с нуля), Ascending);
+===================================================================================  
+#фильтрация
+this.(таблица)BindingSource.Filter = "(что ищем) =' " +textBox1.Text + " ' ";
+if (this.(таблица)BindingSource.Count==0)
+{
+	this.(таблица)BindingSource.Filter="(что ищем) LIKE '%" + textBox1.Text + "%'";
+}
+===================================================================================
+#отмена фильтрации
+this.(таблица)BindingSource.Filter = "";
